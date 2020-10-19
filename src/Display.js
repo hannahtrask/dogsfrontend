@@ -4,7 +4,7 @@ const Display = (props) => {
 
   const {dogs} = props
 
-  const loaded = (
+  const loaded = () => (
 		<div style={{ textAlign: 'center' }}>
 			{dogs.map((dog) => (
 				<article>
@@ -18,7 +18,7 @@ const Display = (props) => {
   
   const loading = <h1>loading . . .</h1>
 
-  return dogs.length > 0 ? loaded : loading
+  return dogs.length > 0 ? loaded() : loading
 };
 
 export default Display;
