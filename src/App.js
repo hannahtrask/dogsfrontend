@@ -56,9 +56,20 @@ function App() {
     })
   }
 
+  //this function selects a dog and sets the state to the selected doggo
   const selectDog = (dog) => {
     setSelectedDog(dog)
   }
+
+  //this will delete the doggo
+  const deleteDog = (dog) => {
+    fetch(url+'/dog/'+dog._id, {
+      method: "delete"
+    }).then(()=>{
+      getDogs()
+    })
+  }
+
 
   return (
 		<div className='App'>
@@ -72,20 +83,26 @@ function App() {
 					<Route
 						exact
 						path='/'
-						render={(rp) => <Display {...rp} dogs={dogs} selectDog={selectDog} />}
+            render={(rp) => <Display {...rp} dogs={dogs} 
+                                             selectDog={selectDog}
+                                             deleteDog={deleteDog} />}
 					/>
 					<Route
 						exact
 						path='/create'
 						render={(rp) => (
-							<Form {...rp} label='create' dog={emptyDog} handleSubmit={handleCreate} />
+              <Form {...rp} label='create' 
+                            dog={emptyDog}
+                            handleSubmit={handleCreate} />
 						)}
 					/>
 					<Route
 						exact
 						path='/edit'
 						render={(rp) => (
-							<Form {...rp} label='update' dog={selectedDog} handleSubmit={handleUpdate} />
+              <Form {...rp} label='update'
+                            dog={selectedDog}
+                            handleSubmit={handleUpdate} />
 						)}
 					/>
 				</Switch>
