@@ -7,7 +7,7 @@ import Form from "./Form";
 
 function App() {
 
-  const url = 'http://localhost:4500'
+  const url = 'https://dogsbackend1.herokuapp.com';
   const [dogs, setDogs] = useState([]);
   
   //for form
@@ -25,6 +25,7 @@ function App() {
     setDogs(data)
   })
   }
+  console.log(dogs)
 
   useEffect(()=>getDogs(), [])
 

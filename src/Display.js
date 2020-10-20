@@ -3,6 +3,7 @@ import React from "react";
 const Display = (props) => {
 
   const {dogs} = props
+  console.log(props)
 
   const loaded = () => (
 		<div style={{ textAlign: 'center' }}>
